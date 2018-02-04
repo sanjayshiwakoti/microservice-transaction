@@ -20,6 +20,6 @@ export function getAllTransaction() {
  * @return {Promise}
  */
 export function createTransaction(data) {
-  return new Transaction({remarks: data.remarks }).save().then(transaction => transaction.refresh());
+  return new Transaction({id: uuid(), remarks: data.remarks }).save(null, {method: 'insert'}).then(transaction => transaction.refresh());
 }
 
