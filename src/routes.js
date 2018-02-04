@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import swaggerSpec from './utils/swagger';
-import transactionsController from './controllers/transactions';
+import transactionsController from './controllers/transactionsController';
 
 /**
  * Contains all API routes for the application.
