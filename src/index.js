@@ -48,13 +48,13 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(errorHandler.bodyParser);
-app.use(validApiGateway);
 app.use(json);
 
 
 // Everything in the public folder is served as static content
 app.use(express.static(path.join(__dirname, '/../public')));
 
+app.use(validApiGateway);
 // API Routes
 app.use('/api', routes);
 
