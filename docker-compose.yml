@@ -1,20 +1,17 @@
-version: '3'
+version: '2'
 services:
-  express-api-es6-starter:
-    build: .
+  bu-transaction:
+    container_name: bu-transaction
+    image: node:9
     volumes:
+      - ./:/app/
       - .env.docker:/app/.env
     ports:
-      - "8848:8848"
+      - "9001"
     entrypoint: /bin/sh
-    command: -c "sleep 5 && yarn migrate && yarn seed && yarn start:dev"
-    depends_on:
-      - pg
-    links:
-      - pg
-  pg:
-    image: postgres:9-alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=express
+    command: -c "sleep 5 && cd /app/ && yarn && yarn start:dev"
+    networks:
+      - evolve
+networks:
+  evolve:
+    external: true

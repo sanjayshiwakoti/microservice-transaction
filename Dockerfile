@@ -1,13 +1,13 @@
-FROM node:8-alpine
+FROM node:9
 
 # Port Application listens on
-EXPOSE 8848
+EXPOSE 9001
 
 # Copy app and install packages
 WORKDIR /app
 COPY . /app/
-RUN npm -g install yarn && yarn
+RUN yarn install
 
 # Default app commands
-ENTRYPOINT ["npm"]
-CMD ["run", "start:dev"]
+ENTRYPOINT ["yarn"]
+CMD ["start:dev"]
