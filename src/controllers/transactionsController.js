@@ -1,8 +1,6 @@
 import { Router } from 'express';
-import HttpStatus from 'http-status-codes';
 import * as transactionsService from '../services/transactionsService';
-import {transactionsValidator} from '../validators/transactionsValidator';
-
+import { transactionsValidator } from '../validators/transactionsValidator';
 
 const router = Router();
 
@@ -15,6 +13,5 @@ router.post('/', transactionsValidator, (req, res, next) => {
     .then(data => res.json({ data }))
     .catch(err => next(err));
 });
-
 
 export default router;
